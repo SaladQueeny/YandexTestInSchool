@@ -1,0 +1,15 @@
+SELECT strftime('%Y-%m-%d', statistic.date, 'start of month') as monthDate, statistic.description,
+statistic.name AS item_name, categories.name as category_name, brands.name As brand_name,
+sum(statistic.shows) as sum_shows, sum(statistic.clicks) as sum_clicks, sum(statistic.orders) as sum_orders, sum(statistic.gmv) as sum_gmv
+FROM categories INNER JOIN Statistic ON categories.id = statistic.category_id INNER JOIN Brands ON brands.id = statistic.brand_id
+WHERE
+statistic.date BETWEEN '2021-04-01' AND '2021-07-31'
+AND statistic.clicks>=statistic.orders
+AND statistic.shows>=statistic.clicks
+AND brands.name != 'Apple'
+AND brands.name != 'Samsung'
+AND categories.name != 'Варочные панели'
+AND categories.name != 'Садовые измельчители'
+group by monthDate, description, item_name, brand_name, category_name
+order BY monthDate ASC, sum_gmv DESC
+LIMIT 100;

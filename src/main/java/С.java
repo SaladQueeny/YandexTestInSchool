@@ -21,71 +21,41 @@ public class С {
         }
         List<Double> time = new ArrayList<>();
         List<Integer> timegood = new ArrayList<>();
+        List<Date> date = new ArrayList<>();
         timegood.add(0);
 
         List<String> datesTime = new ArrayList<>();
         List<String[]> list = new ArrayList<>();
         for(int i=1; i<str.size();i++){
-            //System.out.println(str.get(i));
             String string = str.get(i);
             String[] words = string.split(" ");
-            //System.out.println(Arrays.toString(words));
             list.add(words);
 
-            String forDatesTime = words[0].substring(1,words[0].length())+" "+ words[1].substring(0,words[1].length()-1);
+            //String forDatesTime = words[0].substring(1,words[0].length())+" "+ words[1].substring(0,words[1].length()-1);
 
             if(words[2].equals("ERROR")){//возможно учитывать даты
-                //System.out.println(words[2]);
+                Date dated = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(words[0].substring(1,words[0].length())+" "+ words[1].substring(0,words[1].length()-1));
+                //System.out.println(dated);
+                //System.out.println(dated.getTime()/1000);
+                //System.out.println(words[0].substring(1,words[0].length())+" "+ words[1].substring(0,words[1].length()-1));
                 datesTime.add(words[0].substring(1,words[0].length())+" "+ words[1].substring(0,words[1].length()-1));
-                double currentTime = 0;
-                //System.out.println(Double.parseDouble(forDatesTime.substring(0,4)));
-                //System.out.println(Integer.parseInt(forDatesTime.substring(5,7)));
-                double currentdatePlusMonth=0;
-                for(int k=0;k<Integer.parseInt(forDatesTime.substring(5,7))-1;k++){
-                    if(Integer.parseInt(forDatesTime.substring(0,4))==2020){
-                        currentdatePlusMonth+=monthNotNormal[k];
-                    }else{
-                        currentdatePlusMonth+=monthNormal[k];
-                    }
-                }
-                currentdatePlusMonth+=Double.parseDouble(forDatesTime.substring(8,10));
-                //System.out.println(currentdatePlusMonth);
-                currentTime=31536000*Double.parseDouble(forDatesTime.substring(0,4))+86400*currentdatePlusMonth+Double.parseDouble(forDatesTime.substring(11,13))*3600+Double.parseDouble(forDatesTime.substring(14,16))*60+Double.parseDouble(forDatesTime.substring(17,19));
-                time.add(currentTime);
-//                if(Integer.parseInt(forDatesTime.substring(0,4))==2020&&Integer.parseInt(forDatesTime.substring(5,7))==2){
-//
-//                    //if(Integer.parseInt(forDatesTime.substring(11,13))==0){
-//
-//                    // currentTime=31536000*Double.parseDouble(forDatesTime.substring(0,4))+Double.parseDouble(forDatesTime.substring(5,7))*29*86400+86400*Double.parseDouble(forDatesTime.substring(8,10))+24*3600+Double.parseDouble(forDatesTime.substring(14,16))*60+Double.parseDouble(forDatesTime.substring(17,19));
-//                    // time.add(currentTime);
-//
-//                    // }else{
-//                    currentTime=31536000*Double.parseDouble(forDatesTime.substring(0,4))+Double.parseDouble(forDatesTime.substring(5,7))*29*86400+86400*Double.parseDouble(forDatesTime.substring(8,10))+Double.parseDouble(forDatesTime.substring(11,13))*3600+Double.parseDouble(forDatesTime.substring(14,16))*60+Double.parseDouble(forDatesTime.substring(17,19));
-//                    time.add(currentTime);
-//                    // }
-//                }else if(Integer.parseInt(forDatesTime.substring(0,4))==2021&&Integer.parseInt(forDatesTime.substring(5,7))==2){
-//                    //if(Integer.parseInt(forDatesTime.substring(11,13))==0){
-//                    //   currentTime=31536000*Double.parseDouble(forDatesTime.substring(0,4))+Double.parseDouble(forDatesTime.substring(5,7))*28*86400+86400*Double.parseDouble(forDatesTime.substring(8,10))+24*3600+Double.parseDouble(forDatesTime.substring(14,16))*60+Double.parseDouble(forDatesTime.substring(17,19));
-//
-//                    //  time.add(currentTime);
-//
-//                    //}else{
-//                    currentTime=31536000*Double.parseDouble(forDatesTime.substring(0,4))+Double.parseDouble(forDatesTime.substring(5,7))*28*86400+86400*Double.parseDouble(forDatesTime.substring(8,10))+Double.parseDouble(forDatesTime.substring(11,13))*3600+Double.parseDouble(forDatesTime.substring(14,16))*60+Double.parseDouble(forDatesTime.substring(17,19));
-//                    time.add(currentTime);
-//                    // }
-//                }else{
-//                    if(Double.parseDouble(forDatesTime.substring(5,7))%2==0&&Double.parseDouble(forDatesTime.substring(5,7))!=8){
-//
-//                        currentTime=31536000*Double.parseDouble(forDatesTime.substring(0,4))+Double.parseDouble(forDatesTime.substring(5,7))*30*86400+86400*Double.parseDouble(forDatesTime.substring(8,10))+Double.parseDouble(forDatesTime.substring(11,13))*3600+Double.parseDouble(forDatesTime.substring(14,16))*60+Double.parseDouble(forDatesTime.substring(17,19));
-//                        time.add(currentTime);
+
+
+//                double currentTime = 0;
+//                double currentdatePlusMonth=0;
+//                for(int k=0;k<Integer.parseInt(forDatesTime.substring(5,7))-1;k++){
+//                    if(Integer.parseInt(forDatesTime.substring(0,4))==2020){
+//                        currentdatePlusMonth+=monthNotNormal[k];
 //                    }else{
-//
-//                        currentTime=31536000*Double.parseDouble(forDatesTime.substring(0,4))+Double.parseDouble(forDatesTime.substring(5,7))*31*86400+86400*Double.parseDouble(forDatesTime.substring(8,10))+Double.parseDouble(forDatesTime.substring(11,13))*3600+Double.parseDouble(forDatesTime.substring(14,16))*60+Double.parseDouble(forDatesTime.substring(17,19));
-//                        time.add(currentTime);
+//                        currentdatePlusMonth+=monthNormal[k];
 //                    }
 //                }
-                //System.out.println(currentTime);
-                //time.add(Integer.parseInt(forDatesTime.substring(11,13))*3600+Integer.parseInt(forDatesTime.substring(14,16))*60+Integer.parseInt(forDatesTime.substring(17,19)));
+//                currentdatePlusMonth+=Double.parseDouble(forDatesTime.substring(8,10));
+//
+//                currentTime=31536000*Double.parseDouble(forDatesTime.substring(0,4))+86400*currentdatePlusMonth+Double.parseDouble(forDatesTime.substring(11,13))*3600+Double.parseDouble(forDatesTime.substring(14,16))*60+Double.parseDouble(forDatesTime.substring(17,19));
+
+                //time.add(currentTime);
+                time.add((double)dated.getTime()/1000);
 
             }
 
@@ -97,6 +67,7 @@ public class С {
         for(int i=e-1; i<time.size();i++){
 
             summ=time.get(i)-time.get(j);
+
             if(summ<t){
                 answer= datesTime.get(i);
                 break;
@@ -106,7 +77,5 @@ public class С {
         }
         System.out.println(answer);
 
-        long end = System.currentTimeMillis();
-        //System.out.println(end-start);
     }
 }

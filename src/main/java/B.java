@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class B {
@@ -19,7 +17,7 @@ public class B {
                     a = a|arr[i][j];
                 }
             }
-            System.out.println(a);
+            System.out.print(a+" ");
             a=0;
         }
     }
