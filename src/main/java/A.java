@@ -74,28 +74,22 @@ public class A {
 
                 }
             });
-            Collections.sort(datadase, new Comparator<nado>() {
-                @Override
-                public int compare(nado o1, nado o2) {
-                    if(o1.item_id> o2.item_id){
-                        return 1;
-                    }else if(o1.item_id < o2.item_id){
-                        return -1;
-                    } else{
-                        return 0;
-                    }
+            Collections.sort(datadase, (o1, o2) -> {
+                if(o1.item_id> o2.item_id){
+                    return 1;
+                }else if(o1.item_id < o2.item_id){
+                    return -1;
+                } else{
+                    return 0;
                 }
             });
-            Collections.sort(datadase, new Comparator<nado>() {
-                @Override
-                public int compare(nado o1, nado o2) {
-                    if(o1.order_id> o2.order_id){
-                        return 1;
-                    }else if(o1.order_id < o2.order_id){
-                        return -1;
-                    } else{
-                        return 0;
-                    }
+            Collections.sort(datadase, (o1, o2) -> {
+                if(o1.order_id> o2.order_id){
+                    return 1;
+                }else if(o1.order_id < o2.order_id){
+                    return -1;
+                } else{
+                    return 0;
                 }
             });
 
